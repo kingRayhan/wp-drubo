@@ -117,7 +117,7 @@ if ( ! function_exists( 'wpdrubo_scripts' ) ) :
     wp_enqueue_script( 'theme-main-js' , get_template_directory_uri(). '/assets/js/main.js', array('jquery') , '1.0.0' , true );
 
 
-    wp_enqueue_script( 'google-map-js' , 'https://maps.googleapis.com/maps/api/js', array('jquery') , '1.0.0' , true );
+    //wp_enqueue_script( 'google-map-js' , 'https://maps.googleapis.com/maps/api/js', array('jquery') , '1.0.0' , true );
     
 
 
@@ -134,28 +134,3 @@ endif;
 
 
 
-add_action('wp_footer' , function(){ ?>
-	<script>
-function initialize() {
-  var mapOptions = {
-	zoom: 16,
-	scrollwheel: false,
-	center: new google.maps.LatLng(34.073781, -84.302295)
-  };
-
-  var map = new google.maps.Map(document.getElementById('googleMap'),
-	  mapOptions);
-
-
-  var marker = new google.maps.Marker({
-	position: map.getCenter(),
-	animation:google.maps.Animation.BOUNCE,
-	icon: '<?php echo get_template_directory_uri(); ?>/assets/images/icon/map-icon.png',
-	map: map
-  });
-
-}
-
-google.maps.event.addDomListener(window, 'load', initialize);
-	</script>
-<?php },999);
